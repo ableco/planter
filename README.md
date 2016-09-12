@@ -18,7 +18,7 @@ And then execute:
 
 - Install Planter
 - Run rake task to setup plant folder
-- Setup heroku review apps to run post deploy scripts
+- Setup Heroku review apps with the `buildpack-ruby-rake-deploy-tasks` buildpack.
 
 ## Development
 

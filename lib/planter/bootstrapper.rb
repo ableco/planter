@@ -70,9 +70,9 @@ module Planter
       # Checks that the GITHUB_REPOSITORY_FULLNAME environment variable
       # has been set and then returns it.
       def repository_full_name
-        full_name = ENV["GITHUB_REPOSITORY_FULLNAME"]
+        full_name = Planter.configuration.github_repository_fullname
         unless full_name
-          raise "The GITHUB_REPOSITORY_FULLNAME environment variable has not been set."
+          raise "The GitHub repository full name has not been set."
         end
         full_name
       end
