@@ -54,14 +54,14 @@ module Planter
       # Alternatively, a PULL_REQUEST_NUMBER can explicitly be set.
       def pull_request_number
         return ENV["PULL_REQUEST_NUMBER"] if ENV["PULL_REQUEST_NUMBER"]
-        ENV["HEROKU_APP_NAME"].split("-pr-").last.to_i if ENV["HEROKU_APP_NAME"]
+        Planter.configuration.heroku_app_name.split("-pr-").last.to_i if Planter.configuration.heroku_app_name
       end
 
       # Fetch a pull request object from GitHub based on a repository
       # name and pull request number.
       def pull_request(repository_full_name, pr_number)
         # Ensure that the pull request exists.
-        client = Octokit::Client.new(access_token: ENV["GITHUB_ACCESS_TOKEN"])
+        client = Octokit::Client.new(access_token: Planter.configuration.github_access_token)
         client.pull_request(repository_full_name, pr_number)
       rescue Octokit::NotFound
         raise "Pull request ##{pr_number} for #{repository_full_name} was not found."
