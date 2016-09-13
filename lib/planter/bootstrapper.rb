@@ -67,10 +67,10 @@ module Planter
         raise "Pull request ##{pr_number} for #{repository_full_name} was not found."
       end
 
-      # Checks that the GITHUB_REPOSITORY_FULLNAME environment variable
+      # Checks that the GitHub repository full name
       # has been set and then returns it.
       def repository_full_name
-        full_name = Planter.configuration.github_repository_fullname
+        full_name = Planter.configuration.github_repository_full_name
         unless full_name
           raise "The GitHub repository full name has not been set."
         end
