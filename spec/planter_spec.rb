@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Planter do
   it 'has a version number' do
-    expect(Planter::VERSION).not_to be nil
+    expect(subject::VERSION).not_to be nil
   end
 
   describe "#configure" do
@@ -14,7 +14,7 @@ describe Planter do
       let(:heroku_app_name) { "planter" }
 
       before :each do
-        Planter.configure do |config|
+        subject.configure do |config|
           config.github_access_token = github_access_token
           config.github_repository_full_name = github_repository_full_name
           config.heroku_app_name = heroku_app_name
@@ -22,29 +22,29 @@ describe Planter do
       end
 
       it "sets the github_access_token" do
-        expect(Planter.configuration.github_access_token).to eq(github_access_token)
+        expect(subject.configuration.github_access_token).to eq(github_access_token)
       end
 
       it "sets the github_repository_full_name" do
-        expect(Planter.configuration.github_repository_full_name).to eq(github_repository_full_name)
+        expect(subject.configuration.github_repository_full_name).to eq(github_repository_full_name)
       end
 
       it "sets the heroku_app_name" do
-        expect(Planter.configuration.heroku_app_name).to eq(heroku_app_name)
+        expect(subject.configuration.heroku_app_name).to eq(heroku_app_name)
       end
     end
 
     context "when attributes are not specified" do
       it "sets the github_access_token to nil" do
-        expect(Planter.configuration.github_access_token).to eq(nil)
+        expect(subject.configuration.github_access_token).to eq(nil)
       end
 
       it "sets the github_repository_full_name to nil" do
-        expect(Planter.configuration.github_repository_full_name).to eq(nil)
+        expect(subject.configuration.github_repository_full_name).to eq(nil)
       end
 
       it "sets the heroku_app_name to nil" do
-        expect(Planter.configuration.heroku_app_name).to eq(nil)
+        expect(subject.configuration.heroku_app_name).to eq(nil)
       end
     end
   end
