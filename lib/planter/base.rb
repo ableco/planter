@@ -1,5 +1,5 @@
 module Planter
-  # Seed files should all inheirit from this Base class.
+  # Seed files should all inherit from this Base class.
   class Base
     attr_reader :issue_number
 
