@@ -73,3 +73,10 @@ the `buildpack-ruby-rake-deploy-tasks` custom buildpack. Here's an example `app.
 ```
 
 ## Usage
+
+Generate an issue specific seed file using the issue number:
+
+    $ rails generate planter:issue 42
+
+That command will generate an issue specific seed file for GitHub issue #42. The
+file can be found and edited at `db/plant/issue_42.rb`.
