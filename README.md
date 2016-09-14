@@ -1,6 +1,12 @@
 # Planter
 
-Planter helps streamline the process of creating issue specific seed files for your pull requests.
+Planter helps streamline QA on your Rails apps by making it easy to create issue specific seed files for your pull requests.
+
+## Requirements
+
+- A Rails app with the Planter gem installed
+- The app needs to be deployed to Heroku
+- The app needs to use Heroku review apps with the `buildpack-ruby-rake-deploy-tasks` buildpack
 
 ## Installation
 
@@ -12,7 +18,7 @@ gem "planter", git: "https://github.com/ableco/planter.git"
 
 And then execute:
 
-    $ bundle
+    $ bundle install
 
 ## Usage
 

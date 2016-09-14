@@ -1,3 +1,5 @@
+require "octokit"
+
 module Planter
   # Bootstrapping qa data.
   # Additional implementation notes: https://github.com/ableco/fino/wiki/Bootstrapping-QA-data.
