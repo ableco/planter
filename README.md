@@ -19,6 +19,7 @@ gem "planter", git: "https://github.com/ableco/planter.git"
 And then execute:
 
     $ bundle install
+    $ rails generate planter:install
 
 ## Usage
 
