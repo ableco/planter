@@ -22,15 +22,19 @@ And then execute:
     $ bundle install
     $ rails generate planter:install
 
-Configure Planter using environment variables and the following initializer:
+The Planter install script will create a `db/plant` folder with a default seed
+file. It will also generate the following initializer file:
 
 ```ruby
 Planter.configure do |config|
   config.github_access_token         = ENV["GITHUB_ACCESS_TOKEN"]
-  config.github_repository_full_name = ENV["GITHUB_REPOSITORY_FULLNAME"]
+  config.github_repository_full_name = ENV["GITHUB_REPOSITORY_FULL_NAME"]
   config.heroku_app_name             = ENV["HEROKU_APP_NAME"]
 end
 ```
+
+`HEROKU_APP_NAME` is automatically set but you will need to define `GITHUB_ACCESS_TOKEN`
+and `GITHUB_REPOSITORY_FULL_NAME` in [the Heroku config yourself](https://devcenter.heroku.com/articles/config-vars).
 
 Your Heroku review apps need to be configured to run the Planter rake tasks after deploy
 and before destroy. This can be accomplished by updating your `app.json` file to use

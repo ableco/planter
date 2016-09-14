@@ -9,6 +9,7 @@ module Planter
 
     def create_default_seed_file
       copy_file "default.rb", "db/plant/default.rb"
+      copy_file "planter.rb", "config/initializers/planter.rb"
     end
   end
 end
