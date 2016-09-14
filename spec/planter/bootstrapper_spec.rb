@@ -4,6 +4,7 @@ describe Planter::Bootstrapper do
   after { restore_default_config }
 
   before do
+    # Stub Rails so that the the call to `Rails.root` when requiring files works
     stub_const("Rails", Module.new)
     allow(Rails).to receive(:root) { "planter" }
 
@@ -62,7 +63,7 @@ describe Planter::Bootstrapper do
       # Return true as if the file exists
       allow(described_class).to receive(:load_issue_specific_seed_file) { true }
 
-      # Need to stub the `class` method otherwise we get a an RSpec::Mocks::Double
+      # Need to stub the `class` method otherwise we get an RSpec::Mocks::Double
       # class instead of the correct class in our specs.
       allow(plant_default_class_stub).to receive(:class) { plant_default_class_stub }
       allow(issue_11_plant_class_stub).to receive(:class) { issue_11_plant_class_stub }
