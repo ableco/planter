@@ -14,6 +14,7 @@ module Planter
     # Public: Expose generators to application's `rails generate`
     generators do
       require "planter/generators/install_generator"
+      require "planter/generators/plant_generator"
     end
   end
 end
