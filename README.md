@@ -9,6 +9,15 @@ Planter helps streamline QA on your Rails apps by making it easy to create issue
 - The app needs to be deployed to Heroku
 - The app needs to use Heroku review apps with the `buildpack-ruby-rake-deploy-tasks` buildpack
 
+## Usage
+
+Generate an issue specific seed file using the issue number:
+
+    $ rails generate planter:issue 42
+
+That command will generate an issue specific seed file for GitHub issue #42. The
+file can be found and edited at `db/plant/issue_42.rb`.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -71,12 +80,3 @@ the `buildpack-ruby-rake-deploy-tasks` custom buildpack. Here's an example `app.
   ]
 }
 ```
-
-## Usage
-
-Generate an issue specific seed file using the issue number:
-
-    $ rails generate planter:issue 42
-
-That command will generate an issue specific seed file for GitHub issue #42. The
-file can be found and edited at `db/plant/issue_42.rb`.
