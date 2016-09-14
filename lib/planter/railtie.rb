@@ -10,5 +10,10 @@ module Planter
     rake_tasks do
       load "planter/tasks/planter.rake"
     end
+
+    # Public: Expose generators to application's `rails generate`
+    generators do
+      require "planter/generators/install_generator"
+    end
   end
 end
