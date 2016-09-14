@@ -22,7 +22,7 @@ And then execute:
     $ bundle install
     $ rails generate planter:install
 
-Create an initializer file with the following:
+Configure Planter using environment variables and the following initializer:
 
 ```ruby
 Planter.configure do |config|
@@ -32,22 +32,38 @@ Planter.configure do |config|
 end
 ```
 
-## Usage
+Your Heroku review apps need to be configured to run the Planter rake tasks after deploy
+and before destroy. This can be accomplished by updating your `app.json` file to use
+the `buildpack-ruby-rake-deploy-tasks` custom buildpack. Here's an example `app.json` file:
 
-- Install Planter
-- Run rake task to setup plant folder
-- Setup Heroku review apps with the `buildpack-ruby-rake-deploy-tasks` buildpack.
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/planter. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+```json
+{
+  "name": "Planter",
+  "website": "https://github.com/ableco/planter",
+  "repository": "https://github.com/ableco/planter",
+  "scripts": {
+    "pr-predestroy": "bundle exec rake planter:deseed"
+  },
+  "env": {
+    "GITHUB_ACCESS_TOKEN": {
+      "required": true
+    },
+    "GITHUB_REPOSITORY_FULLNAME": {
+      "required": true
+    },
+    "HEROKU_APP_NAME": {
+      "required": true
+    },
+    "DISABLE_DATABASE_ENVIRONMENT_CHECK": "1",
+    "DEPLOY_TASKS": "db:schema:load db:seed planter:seed RAILS_ENV=production"
+  },
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-ruby.git"
+    },
+    {
+      "url": "https://github.com/ableco/buildpack-ruby-rake-deploy-tasks"
+    }
+  ]
+}
+```
