@@ -6,8 +6,7 @@ Planter helps streamline QA on your Rails apps by making it easy to create issue
 
 - A Rails app with the Planter gem installed
 - GitHub issues for issue tracking
-- The app needs to be deployed to Heroku
-- The app needs to use Heroku review apps with the `buildpack-ruby-rake-deploy-tasks` buildpack
+- An app deployed to Heroku
 
 ## Usage
 
@@ -20,7 +19,7 @@ That command will generate an issue specific seed file for GitHub issue #42.
 The file can be found and edited at `db/plant/issue_42.rb`.
 
 When a pull request that closes issue #42 is deployed as a Heroku review app,
-that seed file will be run.
+that seed file will be used to seed the database.
 
 ## Installation
 
