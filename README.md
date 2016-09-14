@@ -5,6 +5,7 @@ Planter helps streamline QA on your Rails apps by making it easy to create issue
 ## Requirements
 
 - A Rails app with the Planter gem installed
+- GitHub issues for issue tracking
 - The app needs to be deployed to Heroku
 - The app needs to use Heroku review apps with the `buildpack-ruby-rake-deploy-tasks` buildpack
 
@@ -20,6 +21,16 @@ And then execute:
 
     $ bundle install
     $ rails generate planter:install
+
+Create an initializer file with the following:
+
+```ruby
+Planter.configure do |config|
+  config.github_access_token         = ENV["GITHUB_ACCESS_TOKEN"]
+  config.github_repository_full_name = ENV["GITHUB_REPOSITORY_FULLNAME"]
+  config.heroku_app_name             = ENV["HEROKU_APP_NAME"]
+end
+```
 
 ## Usage
 
