@@ -15,8 +15,12 @@ Generate an issue specific seed file using the issue number:
 
     $ rails generate planter:issue 42
 
-That command will generate an issue specific seed file for GitHub issue #42. The
-file can be found and edited at `db/plant/issue_42.rb`.
+That command will generate an issue specific seed file for GitHub issue #42.
+
+The file can be found and edited at `db/plant/issue_42.rb`.
+
+When a pull request that closes issue #42 is deployed as a Heroku review app,
+that seed file will be run.
 
 ## Installation
 
