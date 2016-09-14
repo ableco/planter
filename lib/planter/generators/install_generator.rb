@@ -8,8 +8,8 @@ module Planter
     source_root File.expand_path("../../../../templates", __FILE__)
 
     def create_default_seed_file
-      copy_file "default.rb", "db/plant/default.rb"
-      copy_file "planter.rb", "config/initializers/planter.rb"
+      copy_file "db/plant/default.rb", "db/plant/default.rb"
+      copy_file "config/initializers/planter.rb", "config/initializers/planter.rb"
     end
   end
 end

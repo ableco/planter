@@ -8,7 +8,9 @@ module Planter
     source_root File.expand_path("../../../../templates", __FILE__)
 
     def create_issue_seed_file
-      copy_file "default.rb", "db/plant/issue_#{file_name}.rb"
+      seed_file_name = "db/plant/issue_#{file_name}.rb"
+      copy_file "db/plant/issue_template.rb", seed_file_name
+      gsub_file seed_file_name, /Issue/, "Issue#{file_name}"
     end
   end
 end
