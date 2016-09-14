@@ -26,7 +26,7 @@ that seed file will be used to seed the database.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "planter", git: "https://github.com/ableco/planter.git"
+gem "planter", git: "https://github.com/ableco/planter.git", tag: "v0.1.0"
 ```
 
 And then execute:
