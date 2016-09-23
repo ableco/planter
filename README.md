@@ -12,7 +12,7 @@ Planter helps streamline QA on your Rails apps by making it easy to create issue
 
 Generate an issue specific seed file using the issue number:
 
-    $ rails generate planter:issue 42
+    $ rails generate planter:plant 42
 
 That command will generate an issue specific seed file for GitHub issue #42.
 

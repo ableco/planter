@@ -1,7 +1,7 @@
 require "rails/generators"
 
 module Planter
-  # Public: `rails generate planter:issue 1`
+  # Public: `rails generate planter:plant 1`
   class PlantGenerator < Rails::Generators::NamedBase
     desc "Create an issue seed file and put in db/plant."
 
