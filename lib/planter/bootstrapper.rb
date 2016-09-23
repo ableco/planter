@@ -26,7 +26,7 @@ module Planter
           end
 
           next unless load_issue_specific_seed_file(issue_number)
-          issue_seed = Plant.const_get("Issue#{issue_number}").class.new(issue_number)
+          issue_seed = Plant.const_get("Issue#{issue_number}").new(issue_number)
           seeding? ? issue_seed.seed : issue_seed.deseed
         end
       end
