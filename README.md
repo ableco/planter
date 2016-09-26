@@ -1,5 +1,6 @@
 # Planter
-Planter helps streamline QA on your Rails apps by making it easy to create issue specific seed files for your pull requests.
+Planter helps streamline the engineering and QA process for your Rails app by
+making it easy to create issue specific seed files for pull requests.
 
 ## Requirements
 - A Rails app with the Planter gem installed
@@ -30,7 +31,7 @@ that you want performed for every review app in here.
 Include `planter` in your Gemfile:
 
 ```ruby
-gem "planter", git: "https://github.com/ableco/planter.git", tag: "v0.1.1"
+gem "planter", git: "https://github.com/ableco/planter.git", tag: "v0.1.2"
 ```
 
 And then execute:

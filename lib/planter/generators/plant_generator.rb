@@ -3,7 +3,7 @@ require "rails/generators"
 module Planter
   # Public: `rails generate planter:plant 1`
   class PlantGenerator < Rails::Generators::NamedBase
-    desc "Create an issue seed file and put in db/plant."
+    desc "Create an issue specific seed file and put it in db/plant."
 
     source_root File.expand_path("../../../../templates", __FILE__)
 

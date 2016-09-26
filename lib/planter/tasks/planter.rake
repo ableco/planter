@@ -1,5 +1,4 @@
-# Bootstrap qa data using Planter. Additional Information about how Planter
-# is implemented can be found at https://github.com/ableco/fino/wiki/Bootstrapping-QA-data.
+# Bootstrap qa data using Planter.
 namespace :planter do
   desc "Runs default seed file and all issue specific seed files"
   task seed: [:environment] do

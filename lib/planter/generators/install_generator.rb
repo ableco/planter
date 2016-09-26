@@ -3,7 +3,7 @@ require "rails/generators"
 module Planter
   # Public: `rails generate planter:install`
   class InstallGenerator < Rails::Generators::Base
-    desc "Create the default.rb seed file and put in db/plant."
+    desc "Create the default.rb seed file and put it in db/plant."
 
     source_root File.expand_path("../../../../templates", __FILE__)
 

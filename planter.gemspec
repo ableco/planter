@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Able Engineering"]
   spec.email         = ["engineering@able.co"]
 
-  spec.summary       = %q{Planter helps streamline QA on your Rails apps by making it easy to create issue specific seed files for your pull requests.}
-  spec.description   = %q{Planter helps streamline QA on your Rails apps by making it easy to create issue specific seed files for your pull requests.}
+  spec.summary       = %q{Planter helps streamline the engineering and QA process for your Rails app by making it easy to create issue specific seed files for pull requests.}
+  spec.description   = %q{Planter helps streamline the engineering and QA process for your Rails app by making it easy to create issue specific seed files for pull requests.}
   spec.homepage      = "https://github.com/ableco/planter"
   spec.license       = "MIT"
 

@@ -5,7 +5,7 @@ module Planter
     # GitHub keywords we support https://help.github.com/articles/closing-issues-via-commit-messages/
     SUPPORTED_KEYWORDS = %w(close closes closed fix fixes fixed resolve resolves resolved).freeze
 
-    # Returns the issue numbers found in the pull request description.
+    # Returns an array of the issue numbers found in the pull request description.
     # The numbers are sorted so that seed files are loaded in a predictable order.
     def parse_issue_numbers_from_pull_request_body(pull_request_body)
       pull_request_body.scan(/(#{SUPPORTED_KEYWORDS.join("|")}) #(\d+)/i).map { |x| x.last.to_i }.sort

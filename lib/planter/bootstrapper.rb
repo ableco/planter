@@ -2,7 +2,6 @@ require "octokit"
 
 module Planter
   # Bootstrapping qa data.
-  # Additional implementation notes: https://github.com/ableco/fino/wiki/Bootstrapping-QA-data.
   class Bootstrapper
     class << self
       def seed
@@ -47,6 +46,7 @@ module Planter
         @seeding
       end
 
+      # Parse the pull request's body for the numbers of the issues being QA'd.
       def issue_numbers
         pull_request = pull_request(repository_full_name, pull_request_number)
         Planter::GithubIssueParser.new.parse_issue_numbers_from_pull_request_body(pull_request.body)
@@ -69,8 +69,7 @@ module Planter
         raise "Pull request ##{pr_number} for #{repository_full_name} was not found."
       end
 
-      # Checks that the GitHub repository full name
-      # has been set and then returns it.
+      # Checks that the GitHub repository full name has been set and then returns it.
       def repository_full_name
         full_name = Planter.configuration.github_repository_full_name
         unless full_name
