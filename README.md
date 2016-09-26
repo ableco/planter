@@ -1,29 +1,33 @@
 # Planter
-
 Planter helps streamline QA on your Rails apps by making it easy to create issue specific seed files for your pull requests.
 
 ## Requirements
-
 - A Rails app with the Planter gem installed
 - GitHub issues for issue tracking
-- An app deployed to Heroku
+- An app deployed to Heroku and using review apps
 
 ## Usage
-
-Generate an issue specific seed file using the issue number:
+#### Issue specific seed files
+Issue specific seed files can be generated using the issue number. For example,
+the following command will generate an issue specific seed file for GitHub issue #42:
 
     $ rails generate planter:plant 42
 
-That command will generate an issue specific seed file for GitHub issue #42.
-
-The file can be found and edited at `db/plant/issue_42.rb`.
+Once generated, the file can be found and edited at `db/plant/issue_42.rb`.
 
 When a pull request that closes issue #42 is deployed as a Heroku review app,
-that seed file will be used to seed the database.
+the `seed` method in that file will be executed.
+
+The `deseed` method will be executed when the review app is eventually destroyed.
+This method is useful if there are changes that were made by the `seed` method
+outside of the review app's environment that need reverting.
+
+#### Default seed file
+In `db/plant`, you will also find a file named `default.rb`. Define any actions
+that you want performed for every review app in here.
 
 ## Installation
-
-Add this line to your application's Gemfile:
+Include `planter` in your Gemfile:
 
 ```ruby
 gem "planter", git: "https://github.com/ableco/planter.git", tag: "v0.1.1"
@@ -34,7 +38,7 @@ And then execute:
     $ bundle install
     $ rails generate planter:install
 
-The Planter install script will create a `db/plant` folder with a default seed
+The Planter install script will create a `db/plant` folder with the default seed
 file. It will also generate the following initializer file:
 
 ```ruby
@@ -50,7 +54,9 @@ and `GITHUB_REPOSITORY_FULL_NAME` in [the Heroku config yourself](https://devcen
 
 Your Heroku review apps need to be configured to run the Planter rake tasks after deploy
 and before destroy. This can be accomplished by updating your `app.json` file to use
-the `buildpack-ruby-rake-deploy-tasks` custom buildpack. Here's an example `app.json` file:
+the `buildpack-ruby-rake-deploy-tasks` custom buildpack.
+
+Here's an example `app.json` file:
 
 ```json
 {
