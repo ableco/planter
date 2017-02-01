@@ -16,8 +16,9 @@ the following command will generate an issue specific seed file for GitHub issue
 
 Once generated, the file can be found and edited at `db/plant/issue_42.rb`.
 
-When a pull request that closes issue #42 is deployed as a Heroku review app,
-the `seed` method in that file will be executed.
+When a pull request that closes issue #42 [using one of GitHub's keywords for closing
+an issue via a pull request](https://help.github.com/articles/closing-issues-via-commit-messages/)
+is deployed as a Heroku review app, the `seed` method in that file will be executed.
 
 The `deseed` method will be executed when the review app is eventually destroyed.
 This method is useful if there are changes that were made by the `seed` method
