@@ -9,6 +9,10 @@ making it easy to create issue specific seed files for pull requests.
 
 ## Usage
 #### Issue specific seed files
+When a Heroku review app is deployed, planter will look at the associated pull
+request on GitHub and look for the issues that the pull request is closing using
+the available [GitHub keywords for closing issues via pull requests](https://help.github.com/articles/closing-issues-via-commit-messages/).
+
 Issue specific seed files can be generated using the issue number. For example,
 the following command will generate an issue specific seed file for GitHub issue #42:
 
@@ -16,9 +20,13 @@ the following command will generate an issue specific seed file for GitHub issue
 
 Once generated, the file can be found and edited at `db/plant/issue_42.rb`.
 
-When a pull request that closes issue #42 [using one of GitHub's keywords for closing
-an issue via a pull request](https://help.github.com/articles/closing-issues-via-commit-messages/)
-is deployed as a Heroku review app, the `seed` method in that file will be executed.
+When a pull request that closes issue #42 is deployed as a Heroku review app,
+the `seed` method in that file will be executed.
+
+Here as an example containing all the different keywords that would activate
+the Planter seed file for issue #42.
+
+![example](http://i.imgur.com/DTY5TSZ.png)
 
 The `deseed` method will be executed when the review app is eventually destroyed.
 This method is useful if there are changes that were made by the `seed` method
@@ -53,6 +61,7 @@ end
 
 `HEROKU_APP_NAME` is automatically set but you will need to define `GITHUB_ACCESS_TOKEN`
 and `GITHUB_REPOSITORY_FULL_NAME` in [the Heroku config yourself](https://devcenter.heroku.com/articles/config-vars).
+These variables are used to read the pull requests associated with your review apps.
 
 Your Heroku review apps need to be configured to run the Planter rake tasks after deploy
 and before destroy. This can be accomplished by updating your `app.json` file to use
