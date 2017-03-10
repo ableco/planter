@@ -8,3 +8,4 @@
 /spec/reports/
 /tmp/
 .byebug_history
+*.sw[a-zA-Z]
