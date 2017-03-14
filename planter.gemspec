@@ -29,7 +29,7 @@ folder by running the following command:
 
 MSG
 
-  spec.add_runtime_dependency "octokit", "~> 4.3.0"
+  spec.add_runtime_dependency "octokit", "~> 4.6.0"
 
   spec.add_development_dependency "bundler", "~> 1.12"
   spec.add_development_dependency "rake", "~> 10.0"
