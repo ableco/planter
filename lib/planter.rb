@@ -1,5 +1,7 @@
 require "planter/engine"
 
 module Planter
-  # Your code goes here...
+  class << self
+    attr_accessor :configuration
+  end
 end
