@@ -1,9 +1,10 @@
-# coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'planter/version'
+$:.push File.expand_path("../lib", __FILE__)
 
-Gem::Specification.new do |spec|
+# Maintain your gem's version:
+require "planter/version"
+
+# Describe your gem and declare its dependencies:
+Gem::Specification.new do |s|
   spec.name          = "planter"
   spec.version       = Planter::VERSION
   spec.authors       = ["Able Engineering"]
@@ -14,10 +15,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/ableco/planter"
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
+  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
   spec.post_install_message = <<-MSG
 Planter Setup - Local
