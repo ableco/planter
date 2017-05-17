@@ -1,3 +1,5 @@
 Planter::Engine.routes.draw do
-  get "/reset_state", to: "plants#reset"
+  resources :plants do
+    get :reset
+  end
 end
