@@ -1,6 +1,8 @@
 module Planter
   class PlantsController < ApplicationController
-    respond_to :html
+    def index
+
+    end
 
     def reset
 
