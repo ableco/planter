@@ -1,4 +1,4 @@
 Planter::Engine.routes.draw do
-  resources :seeds
-  resources :plants
+  resources :seeds, format: "html"
+  resources :plants, format: "html"
 end
