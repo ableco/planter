@@ -4,7 +4,7 @@ $:.push File.expand_path("../lib", __FILE__)
 require "planter/version"
 
 # Describe your gem and declare its dependencies:
-Gem::Specification.new do |s|
+Gem::Specification.new do |spec|
   spec.name          = "planter"
   spec.version       = Planter::VERSION
   spec.authors       = ["Able Engineering"]
@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   spec.homepage      = "https://github.com/ableco/planter"
   spec.license       = "MIT"
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
+  spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
   spec.post_install_message = <<-MSG
 Planter Setup - Local
