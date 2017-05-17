@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Seeds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @seeds.each do |seed| %>
+      <tr>
+        <td><%= link_to 'Show', seed %></td>
+        <td><%= link_to 'Edit', edit_seed_path(seed) %></td>
+        <td><%= link_to 'Destroy', seed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Seed', new_seed_path %>
