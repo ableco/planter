@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Planter::GithubIssueParser do
   describe "#parse_issue_numbers_from_pull_request" do
     context "with issue references in the PR body" do

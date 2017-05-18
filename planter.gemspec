@@ -4,20 +4,24 @@ $:.push File.expand_path("../lib", __FILE__)
 require "planter/version"
 
 # Describe your gem and declare its dependencies:
-Gem::Specification.new do |spec|
-  spec.name          = "planter"
-  spec.version       = Planter::VERSION
-  spec.authors       = ["Able Engineering"]
-  spec.email         = ["engineering@able.co"]
+Gem::Specification.new do |s|
+  s.name          = "planter"
+  s.version       = Planter::VERSION
+  s.authors       = ["Able Engineering"]
+  s.email         = ["engineering@able.co"]
 
-  spec.summary       = %q{Planter helps streamline the engineering and QA process for your Rails app by making it easy to create issue specific seed files for pull requests.}
-  spec.description   = %q{Planter helps streamline the engineering and QA process for your Rails app by making it easy to create issue specific seed files for pull requests.}
-  spec.homepage      = "https://github.com/ableco/planter"
-  spec.license       = "MIT"
+  s.summary       = %q{Planter helps streamline the engineering and QA process for your Rails app by making it easy to create issue specific seed files for pull requests.}
+  s.description   = %q{Planter helps streamline the engineering and QA process for your Rails app by making it easy to create issue specific seed files for pull requests.}
+  s.homepage      = "https://github.com/ableco/planter"
+  s.license       = "MIT"
 
-  spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
+  s.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+  s.bindir        = "exe"
+  s.executables   = s.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  s.require_paths = ["lib"]
+  s.test_files = Dir["spec/**/*"]
 
-  spec.post_install_message = <<-MSG
+  s.post_install_message = <<-MSG
 Planter Setup - Local
 ===========================================================================
 You can generate the default seed file and
@@ -27,13 +31,15 @@ folder by running the following command:
 
 MSG
 
-  spec.add_runtime_dependency "octokit", "~> 4.7.0"
+  s.add_runtime_dependency "octokit", "~> 4.7.0"
 
-  spec.add_development_dependency "bundler", "~> 1.12"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "vcr", "~> 3.0.3"
-  spec.add_development_dependency "webmock", "1.24.6" # VCR currently breaks on webmock > 2.0
-  spec.add_development_dependency "generator_spec", "~> 0.9.3"
-  spec.add_development_dependency "byebug"
+  s.add_development_dependency "rails", "~> 5.1.1"
+  s.add_development_dependency "sqlite3"
+  s.add_development_dependency "bundler", "~> 1.12"
+  s.add_development_dependency "rake", "~> 10.0"
+  s.add_development_dependency "rspec-rails", "~> 3.5.1"
+  s.add_development_dependency "vcr", "~> 3.0.3"
+  s.add_development_dependency "webmock", "1.24.6" # VCR currently breaks on webmock > 2.0
+  s.add_development_dependency "generator_spec", "~> 0.9.3"
+  s.add_development_dependency "byebug"
 end

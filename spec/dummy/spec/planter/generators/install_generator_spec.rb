@@ -1,8 +1,8 @@
 require "generator_spec"
-require "planter/generators/install_generator"
+require "generators/planter/install_generator"
 
 describe Planter::InstallGenerator, type: :generator do
-  destination File.expand_path("../../../../tmp", File.dirname(__FILE__))
+  destination File.expand_path("../../../tmp", File.dirname(__FILE__))
 
   context "file generation" do
     before(:all) do

@@ -1,5 +1,3 @@
-require "spec_helper"
-
 describe Planter::Bootstrapper do
   after { restore_default_config }
 

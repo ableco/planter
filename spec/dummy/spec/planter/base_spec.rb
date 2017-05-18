@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Planter::Base do
   describe "issue_number" do
     let(:base) { described_class.new(12345) }

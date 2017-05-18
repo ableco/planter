@@ -1,8 +1,8 @@
 require "generator_spec"
-require "planter/generators/plant_generator"
+require "generators/planter/plant_generator"
 
 describe Planter::PlantGenerator, type: :generator do
-  destination File.expand_path("../../../../tmp", File.dirname(__FILE__))
+  destination File.expand_path("../../../tmp", File.dirname(__FILE__))
 
   context "file generation" do
     let(:expected_file_path) { "db/plant/issue_42.rb" }
