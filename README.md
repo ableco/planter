@@ -42,7 +42,7 @@ that you want performed for every review app in here.
 Include `planter` in your Gemfile:
 
 ```ruby
-gem "planter", git: "https://github.com/ableco/planter.git", tag: "v0.1.4"
+gem "planter", git: "https://github.com/ableco/planter.git", tag: "v0.2.0"
 ```
 
 And then execute:

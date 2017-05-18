@@ -9,3 +9,5 @@
 /tmp/
 .byebug_history
 *.sw[a-zA-Z]
+/spec/dummy/log/
+/spec/dummy/tmp/
