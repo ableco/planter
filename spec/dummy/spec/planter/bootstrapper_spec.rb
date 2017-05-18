@@ -2,10 +2,6 @@ describe Planter::Bootstrapper do
   after { restore_default_config }
 
   before do
-    # Stub Rails so that the the call to `Rails.root` when requiring files works
-    stub_const("Rails", Module.new)
-    allow(Rails).to receive(:root) { "planter" }
-
     Planter.configure do |config|
       config.github_access_token = "GITHUB-ACCESS-TOKEN"
       config.github_repository_full_name = "ableco/fino-test-repository"
