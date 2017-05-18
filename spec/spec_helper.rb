@@ -47,6 +47,12 @@ RSpec.configure do |config|
   # triggering implicit auto-inclusion in groups with matching metadata.
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
+  config.after(:all) do
+    if Rails.env.test?
+      FileUtils.rm_rf(File.expand_path("dummy/tmp", File.dirname(__FILE__)))
+    end
+  end
+
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin

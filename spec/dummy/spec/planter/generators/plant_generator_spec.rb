@@ -3,6 +3,7 @@ require "generators/planter/plant_generator"
 
 describe Planter::PlantGenerator, type: :generator do
   destination File.expand_path("../../../tmp", File.dirname(__FILE__))
+  arguments %w(42)
 
   context "file generation" do
     let(:expected_file_path) { "db/plant/issue_42.rb" }
@@ -10,7 +11,7 @@ describe Planter::PlantGenerator, type: :generator do
 
     before(:all) do
       prepare_destination
-      run_generator(%w(42))
+      run_generator
     end
 
     it "copies the issue seed file template and names it based on to the number given" do
