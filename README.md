@@ -1,4 +1,6 @@
 # Planter
+![CircleCi](https://circleci.com/gh/ableco/planter.svg?style=shield&circle-token=:circle-token)
+
 Planter helps streamline the engineering and QA process for your Rails app by
 making it easy to create issue specific seed files for pull requests.
 
