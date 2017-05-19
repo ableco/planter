@@ -11,3 +11,4 @@
 *.sw[a-zA-Z]
 /spec/dummy/log/
 /spec/dummy/tmp/
+/spec/dummy/db/*.sqlite3

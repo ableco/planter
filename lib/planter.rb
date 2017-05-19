@@ -3,6 +3,7 @@ require "planter/configuration"
 require "planter/base"
 require "planter/github_issue_parser"
 require "planter/bootstrapper"
+require "planter/qa_environment"
 require "octokit"
 
 module Planter
