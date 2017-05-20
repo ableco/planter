@@ -4,27 +4,35 @@ module Planter
   # Bootstrapping qa data.
   class Bootstrapper
     class << self
+      # Run the `seed` method for all of the associated plant files.
       def seed
-        @seeding = true
-        run
+        run_all(seeding: true)
       end
 
+      # Run the `deseed` method for all of the associated plant files.
       # "Deseed" is a real word: http://www.merriam-webster.com/dictionary/deseed
       def deseed
-        @seeding = false
-        run
+        run_all(seeding: false)
       end
 
-      def run
-        QaEnvironment.issue_numbers.each do |issue_number|
-          if defined?(Plant::Default) || load_default_seed_file
-            default_seed = Plant::Default.new(issue_number)
-            seeding? ? default_seed.seed : default_seed.deseed
-          end
+      # Accepts an issue number and boolean and runs the `seed` or `deseed`
+      # method of the plant file corresponding to the issue number.
+      def run(issue_number:, seeding:)
+        if defined?(Plant::Default) || load_default_seed_file
+          default_seed = Plant::Default.new(issue_number)
+          seeding ? default_seed.seed : default_seed.deseed
+        end
 
-          next unless load_issue_specific_seed_file(issue_number)
+        if load_issue_specific_seed_file(issue_number)
           issue_seed = Plant.const_get("Issue#{issue_number}").new(issue_number)
-          seeding? ? issue_seed.seed : issue_seed.deseed
+          seeding ? issue_seed.seed : issue_seed.deseed
+        end
+      end
+
+      # Calls `run` for each issue number associated with the QaEnvironment.
+      def run_all(seeding:)
+        QaEnvironment.issue_numbers.each do |issue_number|
+          run(issue_number: issue_number, seeding: seeding)
         end
       end
 
@@ -38,10 +46,6 @@ module Planter
         require "#{Rails.root}/db/plant/issue_#{issue_number}.rb"
       rescue LoadError
         false
-      end
-
-      def seeding?
-        @seeding
       end
     end
   end

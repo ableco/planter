@@ -13,24 +13,22 @@ describe Planter::Bootstrapper do
   let(:issue_15_plant_path) { "#{Rails.root}/db/plant/issue_15.rb" }
 
   describe "#seed" do
-    it "sets @seeding to true and calls #run" do
-      expect(described_class).to receive(:run)
+    it "calls #run_all and passes a true value for `seeding`" do
+      expect(described_class).to receive(:run_all).with(seeding: true)
       described_class.seed
-      expect(described_class.instance_variable_get(:@seeding)).to be(true)
     end
   end
 
   describe "#deseed" do
-    it "sets @seeding to false and calls #run" do
-      expect(described_class).to receive(:run)
+    it "calls #run_all and passes a false value for `seeding`" do
+      expect(described_class).to receive(:run_all).with(seeding: false)
       described_class.deseed
-      expect(described_class.instance_variable_get(:@seeding)).to be(false)
     end
   end
 
   # The github_pull_request_for_planter cassette returns a
   # pull request that fixes issues 11 and 15.
-  describe "#run", vcr: { cassette_name: "github_pull_request_for_planter" } do
+  describe "#run_all", vcr: { cassette_name: "github_pull_request_for_planter" } do
     let(:stub_seed_class) do
       Class.new do
         def initialize(x); end
