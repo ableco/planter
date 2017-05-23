@@ -1,1 +1,11 @@
 <h1>Planter</h1>
+
+<p><%= link_to "Pull Request ##{@pull_request_number}", pull_request_url(@pull_request_number) %></p>
+
+<p>Associated issues:</p>
+
+<ul>
+<% @issue_numbers.each do |issue_number| %>
+  <li><%= link_to "Issue ##{issue_number}", issue_url(issue_number) %></li>
+<% end %>
+</ul>

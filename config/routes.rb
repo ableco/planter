@@ -1,6 +1,6 @@
 Planter::Engine.routes.draw do
   root "plants#index"
-  resources :plants, only: [:index] do
-    put :reset
+  resources :plants, param: :issue_number, only: [:index] do
+    get :seed
   end
 end
