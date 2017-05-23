@@ -44,7 +44,7 @@ describe Planter::Bootstrapper do
 
     before do
       # Return true as if the file exists
-      allow(described_class).to receive(:load_issue_specific_seed_file) { true }
+      allow(described_class).to receive(:load_issue_specific_plant_file) { true }
 
       # Need to stub the `class` method otherwise we get an RSpec::Mocks::Double
       # class instead of the correct class in our specs.
@@ -77,8 +77,8 @@ describe Planter::Bootstrapper do
 
       context "issue specific file is missing" do
         before do
-          allow(described_class).to receive(:load_issue_specific_seed_file).and_call_original
-          allow(described_class).to receive(:load_issue_specific_seed_file).with(42) { false }
+          allow(described_class).to receive(:load_issue_specific_plant_file).and_call_original
+          allow(described_class).to receive(:load_issue_specific_plant_file).with(42) { false }
         end
 
         it "calls seed on the default but not the issue specific plant" do
@@ -100,8 +100,8 @@ describe Planter::Bootstrapper do
 
       context "issue specific file is missing" do
         before do
-          allow(described_class).to receive(:load_issue_specific_seed_file).and_call_original
-          allow(described_class).to receive(:load_issue_specific_seed_file).with(42) { false }
+          allow(described_class).to receive(:load_issue_specific_plant_file).and_call_original
+          allow(described_class).to receive(:load_issue_specific_plant_file).with(42) { false }
         end
 
         it "calls seed on the default but not the issue specific plant" do
@@ -123,8 +123,8 @@ describe Planter::Bootstrapper do
 
       context "issue specific file is missing" do
         before do
-          allow(described_class).to receive(:load_issue_specific_seed_file).and_call_original
-          allow(described_class).to receive(:load_issue_specific_seed_file).with(42) { false }
+          allow(described_class).to receive(:load_issue_specific_plant_file).and_call_original
+          allow(described_class).to receive(:load_issue_specific_plant_file).with(42) { false }
         end
 
         it "calls seed on the default but not the issue specific plant" do
