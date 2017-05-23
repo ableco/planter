@@ -7,5 +7,11 @@
 <ul>
 <% @issue_numbers.each do |issue_number| %>
   <li><%= link_to "Issue ##{issue_number}", issue_url(issue_number) %></li>
+  <ul>
+    <li><%= link_to "Seed", plant_seed_url(issue_number) %></li>
+    <li><%= link_to "Deseed", plant_deseed_url(issue_number) %></li>
+  </ul>
 <% end %>
 </ul>
+
+<p><%= link_to "Reset application state", reset_plants_url %></p>
