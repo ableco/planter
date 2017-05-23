@@ -17,7 +17,7 @@ module Planter
 
       # Accepts an issue number and boolean and runs the `seed` or `deseed`
       # method of the plant file corresponding to the issue number.
-      def run(issue_number:, seeding:)
+      def run(issue_number:, seeding: true)
         if defined?(Plant::Default) || load_default_seed_file
           default_seed = Plant::Default.new(issue_number)
           seeding ? default_seed.seed : default_seed.deseed
@@ -30,7 +30,7 @@ module Planter
       end
 
       # Calls `run` for each issue number associated with the QaEnvironment.
-      def run_all(seeding:)
+      def run_all(seeding: true)
         QaEnvironment.issue_numbers.each do |issue_number|
           run(issue_number: issue_number, seeding: seeding)
         end
